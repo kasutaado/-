@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Void Studio — AI Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark"><span></span><span></span><span></span></div><div><strong>VOID STUDIO</strong><small>AI WORKSPACE</small></div></div>
+      <button id="new-chat" class="new-chat"><span class="plus">＋</span> 新しいチャット <kbd>⌘ K</kbd></button>
+      <div class="side-label">WORKSPACE</div>
+      <div class="workspace-card"><div class="workspace-icon">✳</div><div><strong>Multi-agent Builder</strong><small>Plan · Build · Review</small></div><span class="status-dot"></span></div>
+      <div class="side-label history-label">最近のチャット <span>HISTORY</span></div>
+      <div id="session-list" class="session-list"><div class="empty-history">チャット履歴を読み込み中…</div></div>
+      <div class="sidebar-bottom"><div class="avatar">V</div><div class="account-copy"><strong>Void Studio</strong><small>Workspace</small></div><button class="icon-button" id="refresh-sessions" title="履歴を更新">↻</button></div>
+    </aside>
+    <main class="main-panel">
+      <header class="topbar"><div class="breadcrumbs"><span>Workspace</span><i>/</i><strong id="top-title">新しいチャット</strong></div><div class="topbar-right"><span class="secure-label"><span class="secure-dot"></span> Private workspace</span><div class="top-avatar">V</div></div></header>
+      <section id="welcome" class="welcome">
+        <div class="eyebrow"><span class="sparkle">✦</span> YOUR AI DEVELOPMENT TEAM</div>
+        <h1>アイデアを、<span>動くプロダクト</span>へ。</h1>
+        <p class="welcome-sub">チャットで依頼し、ファイルや既存プロジェクトを添付。計画・実装・レビューを複数のAIエージェントが進めます。</p>
+        <div class="feature-row"><div class="feature-pill"><span>◈</span> Multi-agent workflow</div><div class="feature-pill"><span>↥</span> ZIP / file upload</div><div class="feature-pill"><span>⇩</span> Downloadable code</div></div>
+        <div class="suggestion-grid">
+          <button class="suggestion" data-prompt="Next.jsとTypeScriptで、モダンなタスク管理アプリを作成してください。セットアップ方法とREADMEも含めてください。"><span class="suggestion-icon violet">✳</span><span><strong>新しいアプリを作る</strong><small>要件からプロジェクト一式を生成</small></span><b>↗</b></button>
+          <button class="suggestion" data-prompt="添付した既存プロジェクトを分析し、構成と問題点を整理して、改善計画を提案してください。"><span class="suggestion-icon blue">⌘</span><span><strong>既存コードを改善</strong><small>プロジェクトを添付してリファクタリング</small></span><b>↗</b></button>
+          <button class="suggestion" data-prompt="添付プロジェクトにログイン機能と安全なセッション管理を追加してください。変更したファイル一式をZIPで返してください。"><span class="suggestion-icon amber">⌁</span><span><strong>機能を追加する</strong><small>会話を続けて段階的にアップデート</small></span><b>↗</b></button>
+          <button class="suggestion" data-prompt="小さな変更でも品質を保てるように、テスト、エラーハンドリング、READMEを整えてください。"><span class="suggestion-icon green">✓</span><span><strong>品質をチェック</strong><small>テスト・レビュー・ドキュメント整備</small></span><b>↗</b></button>
+        </div>
+      </section>
+      <section id="chat-view" class="chat-view hidden"><div id="messages" class="messages"></div></section>
+      <div class="composer-wrap">
+        <div id="drop-hint" class="drop-hint">ここにファイルをドロップして添付</div>
+        <div id="attachment-list" class="attachment-list"></div>
+        <form id="composer" class="composer">
+          <textarea id="message-input" rows="1" placeholder="作りたいもの、直したいことを入力…" aria-label="メッセージ"></textarea>
+          <div class="composer-bottom"><div class="composer-tools"><label for="file-input" class="tool-button"><span>＋</span> ファイルを添付 <small>ZIP対応</small></label><input id="file-input" type="file" multiple hidden /><span class="composer-note">ZIPはサーバー側で展開し、テキスト内容をAIに渡します</span></div><button id="send-button" class="send-button" type="submit"><span>送信する</span><b>↑</b></button></div>
+        </form>
+        <div class="footer-note">AIの生成物は実行前に確認してください。<span>Powered by Void Multi-agent</span></div>
+      </div>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
