@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: voids-multiagent-web
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_BASE_URL
+        sync: false
+      - key: API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: PGSSLMODE
+        value: require
+      - key: MODEL_PLANNER
+        value: gpt-6-astra
+      - key: MODEL_RESEARCHER
+        value: gemini-4-argon
+      - key: MODEL_CODER
+        value: kimi-k2.7-code
+      - key: MODEL_CRITIC
+        value: deepseek-v4-pro
+      - key: MODEL_SYNTHESIZER
+        value: gpt-6.1-sol
+      - key: REQUEST_TIMEOUT_MS
+        value: "300000"
+      - key: MAX_UPLOAD_MB
+        value: "20"

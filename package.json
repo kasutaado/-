@@ -1,0 +1,26 @@
+{
+  "name": "voids-multiagent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Node.js multi-agent workflow using an OpenAI-compatible API",
+  "scripts": {
+    "start": "node src/web.js",
+    "dev": "node --watch src/web.js",
+    "cli": "node --env-file=.env src/cli.js",
+    "test": "node --test",
+    "diagnose": "node --env-file=.env src/diagnose.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "openai": "^5.8.0",
+    "zod": "^3.25.0",
+    "archiver": "^7.0.1",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "multer": "^2.0.2",
+    "yauzl": "^3.2.0"
+  }
+}
